@@ -12,8 +12,8 @@ Purpose of Awsedit
 ------------------
 At first, Awsedit is intented for people who want to recover data from tapes or
 cartridges that come from Mainframes.
-The data on tape media could be in either EBCDIC or ASCII. But while extracting
-data, some operations on fields of data files are allowed only when in EBCDIC.
+The data on tape media could be either in EBCDIC or ASCII. But, while extracting
+data some operations on fields of data files are allowed only when in EBCDIC.
 (For explanation, refer to awsedit.pdf in doc directory)
 
 Creating AWS virtual tape files
