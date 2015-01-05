@@ -47,7 +47,7 @@ $awsedit ptf-616.aws     #ptf-616.aws under tape drectory
 How can I create AWS files from a real tape ? 
 ------------------------------------------
 An AWS virtual tape file can be created by using a tape drive and Tapecopy
-utility that is shiped with Hecules package, an open source mainframe émulator.
+utility that is shiped with Hercules package, an open source mainframe émulator.
 
 Hecules package can be retrieved from <http://www.hercules-390.org/>
 
