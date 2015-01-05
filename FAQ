@@ -1,0 +1,80 @@
+
+                    ------------------    
+                    | ASWEDIT Utility |
+                    ------------------
+
+What is Awsedit ?
+--------------
+AWSEDIT is a GUI utility that lets you view and extract data from 
+an AWS virtual tape FILE.
+
+
+What is an AWS virtual tape ?
+--------------------------
+An AWS file is a portable virtual tape.  The format was developed and documented
+although not officially by IBM.  It is used in the IBM P/390 machines, the freeware
+Hercules emulator, and most of the commercial emulator products provide support as
+well.  An AWS tape is a single binary file which when mounted using the correct
+commands for your emulation platform appears as a real tape to the guest operating
+system.  Tools also exist to import/export real tapes to virtual and to directly
+create an AWS file or extract from an existing one without using a real tape drive.
+Currently the most robust tools are all on MVS.
+(This definition is picked from <http://www.cbttape.org/>)
+
+
+How can I install AWSEDIT ?
+--------------------------
+Read INSTALL file.
+
+
+Under which Linux distribution Awsedit has been used ?
+----------------------------------------------------
+Under Mandriva 2007 and Mandriva 2010
+
+
+Is there any documentation ?
+--------------------------
+Yes, awsedit.pdf under doc diretory
+
+
+How can I try awsedit ?
+---------------------------
+You can try awsedit with some AWS files from <http://www.cbttape.org/>
+
+$awsedit ptf-616.aws     #ptf-616.aws under tape drectory
+
+
+How can I create AWS files from a real tape ? 
+------------------------------------------
+An AWS file can be obtained by using a tape drive and Tapecopy utility 
+that is shiped with Hecules package, an open source mainframe émulator.
+
+Hecules package can be retreived from <http://www.hercules-390.eu/>
+
+
+Are there any other similar utilities ?
+---------------------------------------------------
+Yes. There is Awsbrows, a windows tool that lets you only view AWS files.
+(This progam inspired me very much. So, thank you Robson !)
+
+Awsbrows can be downloaded from <http://www.cbttape.org/ftp/adhoc/Awsbrows.zip>
+
+and Awsbrowse from SoftDevLabs, another windows tool
+
+Awsbrowse can be downloaded from <http://www.softdevlabs.com/awsbrowse.html>
+
+
+Is it possible to compile Awsedit under Windows ?
+-----------------------------------------
+Yes. You have to install gcc, make and gtk-win-dev before to proceed.
+
+
+Has awsedit been used somewhere?
+----------------------
+Yes, Awsedit was used ia least by a big oil company in Algeria to recover all their archives
+on tapes after Mainframe damage.
+
+
+How can I touch you ?
+---------------------
+email me to <mustapha.oldache@gmail.com>

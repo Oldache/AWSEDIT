@@ -1,0 +1,21 @@
+The simplest way to compile and install awsedit is:
+
+1.git-clone if you have git installed:
+  git clone https://github.com/oldache/awsedit
+or 
+  download the zip file from github then unzip it.
+
+1. change to the target directory 
+   cd awsedit-master
+
+2. Build the Makefile by running:
+./configure
+
+3. Type `make' to compile the package.
+
+4. Type `sudo make install' to install the program.
+
+5. Check if you have /usr/local/bin is in your $PATH then execute:
+
+awsedit  tape/ptf-616.aws
+
