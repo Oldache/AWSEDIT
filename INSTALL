@@ -6,7 +6,7 @@ or
   download the zip file from github then unzip it.
 
 1. change to the target directory 
-   cd awsedit-master
+   cd awsedit
 
 2. Build the Makefile by running:
 ./configure
