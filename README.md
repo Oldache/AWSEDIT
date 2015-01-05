@@ -6,8 +6,7 @@ Inroduction
 -----------
 Awsedit version 0.1 is the latest release (2011).
 Awsedit is a GUI Utility that lets you view and extract data from an
-AWS Virtual Tape File. It was designed by Mustapha Oldache. He is a system
-engineer at SONATRACH, a big oil company located in Algeria.
+AWS Virtual Tape File.
 
 Purpose of Awsedit
 ------------------
