@@ -67,7 +67,7 @@ Awsbrowse can be downloaded from <http://www.softdevlabs.com/awsbrowse.html>
 Is it possible to compile Awsedit under Windows ?
 -----------------------------------------
 Yes. You have to install gcc, make and gtk-win-dev before to proceed.
-gcc and make are contained in the Dev-C++ IDE wish I recommend you. 
+gcc and make are contained in the Dev-C++ IDE which I recommend. 
 
 
 Has awsedit been used somewhere?
