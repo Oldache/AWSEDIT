@@ -54,7 +54,7 @@ Hecules package can be retrieved from <http://www.hercules-390.org/>
 
 Are there any other similar utilities ?
 ---------------------------------------------------
-Yes. There is Awsbrows, a windows tool that lets you only view AWS tape files.
+Yes.There is Awsbrows, a windows tool that lets you only view data from AWS files.
 (This progam inspired me very much. So, thank you Robson !)
 
 Awsbrows can be downloaded from <http://www.cbttape.org/ftp/adhoc/Awsbrows.zip>
@@ -72,8 +72,8 @@ gcc and make are contained in the Dev-C++ IDE which I recommend.
 
 Has awsedit been used somewhere?
 ------------------------------
-Yes, Awsedit was used at least by a big oil company in Algeria to recover all their archives
-on tapes after Mainframe damage.
+Yes, Awsedit was used at least by a big oil company located Algeria to recover
+all their archives on tapes after Mainframe damage.
 
 
 How can I touch you ?
