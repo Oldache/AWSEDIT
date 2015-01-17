@@ -74,8 +74,8 @@ enum
 };
 
 typedef struct _BLKDESC {
-         guint32 loc;
-         guint32 length;
+         guint loc;
+         guint length;
          } BLKDESC;
 
 typedef struct _FIELDESC {
