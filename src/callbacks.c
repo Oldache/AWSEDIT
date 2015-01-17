@@ -51,24 +51,24 @@ BLKDESC (*blk_tmp_ext)[10000];
 BLKDESC (**blk)[10000];
 BLKDESC (**blk_ext)[10000];
 /* vector containing block counts */
-guint32 *blk_count;
-guint32 *blk_count_ext;
+guint *blk_count;
+guint *blk_count_ext;
 /* aws tape file descriptor */
 int f_awsfile;
 /* data file descriptor */
 int f_datafile;
 /* file index */
-guint32 fi;
+guint fi;
 /* block index */
-guint32 bi;
+guint bi;
 /* position within a block */
-guint32 pi;
+guint pi;
 /* textview find selection */
 gint it1,it2;
 /* set to TRUE when string is found */
 gboolean find;
 /* record length */
-guint32  lrecl=80;
+guint  lrecl=80;
 /* index : hexa or decimal */
 gboolean dec=TRUE;
 gboolean hexadata=FALSE;
@@ -126,7 +126,7 @@ on_ouvrir_activate                    (GtkMenuItem     *menuitem,
                                         gpointer         user_data)
 {
 GtkTreePath *path;
-guint32 loc;
+guint loc;
 gboolean  error = FALSE;
 gboolean  tape_end = FALSE;
 find=FALSE;
@@ -134,9 +134,9 @@ GtkTreeIter iter1;  /* Parent iter */
 GtkTreeIter iter2;  /* Child iter  */
 GtkTreeStore *store;
 GtkWidget *pbar;
-guint32 m;
-guint32 progress;
-guint32 total;
+guint m;
+guint progress;
+guint total;
 gfloat ftotal;
 
 gchar label[20];
@@ -909,7 +909,7 @@ on_config_dialog_okbutton_clicked      (GtkButton       *button,
                                         gpointer         user_data)
 {
 gboolean p;
-guint32 l;
+guint l;
 
 if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(index_check)))
   {
