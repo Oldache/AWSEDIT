@@ -24,12 +24,12 @@ Currently the most robust tools are all on MVS.
 
 How can I install Awsedit ?
 --------------------------
-Read INSTALL file.
+Follow instruction in INSTALL file.
 
 
 Under which Linux distribution Awsedit has been used ?
 ----------------------------------------------------
-Under Mandriva 2007 and later under Mandriva 2010
+Under Mandriva 2007 (32 bit) and later under Mandriva 2010 (32 bit)
 
 
 Is there any documentation ?
@@ -41,7 +41,9 @@ How can I try awsedit ?
 ---------------------------
 You can try awsedit with some AWS files from <http://www.cbttape.org/>
 
-$awsedit ptf-616.aws     #ptf-616.aws under tape drectory
+To start, try with ptf-616.aws under tape durecrory.
+
+$awsedit tape/ptf-616.aws
 
 
 How can I create AWS files from a real tape ? 
@@ -66,13 +68,13 @@ Awsbrowse can be downloaded from <http://www.softdevlabs.com/awsbrowse.html>
 
 Is it possible to compile Awsedit under Windows ?
 -----------------------------------------
-Yes. You have to install gcc, make and gtk-win-dev before to proceed.
+Yes. You have to install gcc, make,  and gtk-win-dev before to proceed.
 gcc and make are contained in the Dev-C++ IDE which I recommend. 
 
 
 Has awsedit been used somewhere?
 ------------------------------
-Yes, Awsedit was used at least by a big oil company located Algeria to recover
+Yes, Awsedit was used at least by a big oil company located in Algeria to recover
 all their archives on tapes after Mainframe damage.
 
 
