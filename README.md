@@ -13,7 +13,6 @@ Purpose of Awsedit
 ------------------
 Primarily, Awsedit is intented for people who want to recover data from tapes or
 cartridges that come from Mainframes.
-
 The data on tape media could be either in EBCDIC or ASCII.
 
 While extracting data, some operations on fields of data files are allowed only
