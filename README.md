@@ -28,8 +28,8 @@ You have to connect the reader device to a computer running Linux, with the hope
 that this device will be detected.Then install Hercules package from 
 <http://www.hercules-390.org/>.
 
-Once all things are set, use Tapecopy (from hercules package) to read your tapes
-and create the AWS Virtual Tape Files.
+Finaly, use Tapecopy (from hercules package) to read your tapes and create the 
+AWS Virtual Tape Files.
 
 Installing Awsedit
 ------------------
