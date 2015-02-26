@@ -11,9 +11,9 @@ AWS Virtual Tape File.
 
 Purpose of Awsedit
 ------------------
-Primarily, Awsedit is intented for people who want to recover data from tapes or
+First Awsedit is intented for people who want to recover data from tapes or
 cartridges that come from Mainframes.
-The data on tape media could be either in EBCDIC or ASCII.
+The data on tape media may be either in EBCDIC or ASCII.
 
 While extracting data, some operations on fields of data files are allowed only
 when in EBCDIC. (For explanation, refer to awsedit.pdf in doc directory)
@@ -27,7 +27,7 @@ You have to connect the reader device to a computer running Linux, with the hope
 that this device will be detected.Then install Hercules package from 
 <http://www.hercules-390.org/>.
 
-Finaly, use Tapecopy (from hercules package) to read your tapes and create the 
+Finally, use Tapecopy (from hercules package) to read your tapes and create the 
 AWS Virtual Tape Files.
 
 Installing Awsedit
