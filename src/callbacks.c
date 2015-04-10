@@ -188,7 +188,7 @@ m=0;
 if (blk_tmp) g_free(blk_tmp);
 blk_tmp=g_malloc(10000*sizeof(BLKDESC));
 if (blk) g_free(blk);
-blk=g_malloc0(1000*sizeof(BLKDESC));
+blk=g_malloc0(1000*sizeof(guint));
 if (blk_count) g_free(blk_count);
 blk_count=g_malloc(1000*sizeof(guint));
 blk_count[i]=0;
@@ -250,7 +250,7 @@ if(loc+6<=total)
              g_memmove(blk_count_ext,blk_count,i*sizeof(guint));
              g_free(blk_count);
              blk_count=blk_count_ext;
-             blk_ext=g_malloc0((i+1000)*sizeof(BLKDESC));
+             blk_ext=g_malloc0((i+1000)*sizeof(guint));
              g_memmove(blk_ext,blk,i*sizeof(BLKDESC));
              g_free(blk);
              blk=blk_ext;
