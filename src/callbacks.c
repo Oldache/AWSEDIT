@@ -186,11 +186,11 @@ lseek(f_awsfile,0,0);
 i=0;
 m=0;
 if (blk_tmp) g_free(blk_tmp);
-blk_tmp=g_malloc(10000*2*sizeof(BLKDESC));
+blk_tmp=g_malloc(10000*sizeof(BLKDESC));
 if (blk) g_free(blk);
 blk=g_malloc0(1000*sizeof(BLKDESC));
 if (blk_count) g_free(blk_count);
-blk_count=g_malloc(1000*sizeof(BLKDESC));
+blk_count=g_malloc(1000*sizeof(guint));
 blk_count[i]=0;
 gtk_tree_store_append (store, &iter1, NULL);
 loc=0;
@@ -216,8 +216,8 @@ if(loc+6<=total)
 /* extend memory for more blocks */ 
            if(fmod(blk_count[i],10000)==0)
             {
-             blk_tmp_ext=g_malloc((blk_count[i]+10000)*2*sizeof(BLKDESC));
-             g_memmove(blk_tmp_ext,blk_tmp,blk_count[i]*2*sizeof(BLKDESC));
+             blk_tmp_ext=g_malloc((blk_count[i]+10000)*sizeof(BLKDESC));
+             g_memmove(blk_tmp_ext,blk_tmp,blk_count[i]*sizeof(BLKDESC));
              g_free(blk_tmp);
              blk_tmp=blk_tmp_ext;
             }
@@ -237,7 +237,7 @@ if(loc+6<=total)
             if (blk_count[i]>0)
              {
               if (blk[i]) g_free(blk[i]);
-              blk[i] = g_malloc(blk_count[i]*2*sizeof(BLKDESC));
+              blk[i] = g_malloc(blk_count[i]*sizeof(BLKDESC));
               for (m=0 ; m < blk_count[i] ; m++)
                 (*blk[i])[m] = (*blk_tmp)[m] ;
               sprintf(label,"File%3d  %5d",i+1,blk_count[i]);
@@ -246,8 +246,8 @@ if(loc+6<=total)
 /* extend memory for more files */
            if(fmod(i,1000)==0)
             {
-             blk_count_ext=g_malloc((i+1000)*sizeof(BLKDESC));
-             g_memmove(blk_count_ext,blk_count,i*sizeof(BLKDESC));
+             blk_count_ext=g_malloc((i+1000)*sizeof(guint));
+             g_memmove(blk_count_ext,blk_count,i*sizeof(guint));
              g_free(blk_count);
              blk_count=blk_count_ext;
              blk_ext=g_malloc0((i+1000)*sizeof(BLKDESC));
@@ -277,7 +277,7 @@ gtk_tree_view_set_model (GTK_TREE_VIEW (treeview), GTK_TREE_MODEL (store));
 if(blk_count[i]>0)
       {
            if (blk[i]) g_free(blk[i]);
-           blk[i] = g_malloc(blk_count[i]*2*sizeof(BLKDESC));
+           blk[i] = g_malloc(blk_count[i]*sizeof(BLKDESC));
            for (m=0 ; m < blk_count[i] ; m++)
            (*blk[i])[m] = (*blk_tmp)[m] ;
            if(tape_end==TRUE)
