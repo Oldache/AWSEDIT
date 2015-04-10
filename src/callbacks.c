@@ -647,7 +647,7 @@ gfloat ftotal;
 guint progress;
 guint blk_start,blk_end;
 rec=g_malloc(2*lrecl);
-type=g_malloc(4*lrecl);
+type=g_malloc(sizeof(guint)*lrecl);
 
 /* initialisation */
 
