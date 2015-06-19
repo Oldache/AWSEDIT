@@ -51,24 +51,24 @@ BLKDESC (*blk_tmp_ext)[10000];
 BLKDESC (**blk)[10000];
 BLKDESC (**blk_ext)[10000];
 /* vector containing block counts */
-guint *blk_count;
-guint *blk_count_ext;
+guint32 *blk_count;
+guint32 *blk_count_ext;
 /* aws tape file descriptor */
 int f_awsfile;
 /* data file descriptor */
 int f_datafile;
 /* file index */
-guint fi;
+guint32 fi;
 /* block index */
-guint bi;
+guint32 bi;
 /* position within a block */
-guint pi;
+guint32 pi;
 /* textview find selection */
 gint it1,it2;
 /* set to TRUE when string is found */
 gboolean find;
 /* record length */
-guint  lrecl=80;
+guint32  lrecl=80;
 /* index : hexa or decimal */
 gboolean dec=TRUE;
 gboolean hexadata=FALSE;
@@ -126,7 +126,7 @@ on_ouvrir_activate                    (GtkMenuItem     *menuitem,
                                         gpointer         user_data)
 {
 GtkTreePath *path;
-guint loc;
+guint32 loc;
 gboolean  error = FALSE;
 gboolean  tape_end = FALSE;
 find=FALSE;
@@ -134,9 +134,9 @@ GtkTreeIter iter1;  /* Parent iter */
 GtkTreeIter iter2;  /* Child iter  */
 GtkTreeStore *store;
 GtkWidget *pbar;
-guint m;
-guint progress;
-guint total;
+guint32 m;
+guint32 progress;
+guint32 total;
 gfloat ftotal;
 
 gchar label[20];
@@ -186,11 +186,11 @@ lseek(f_awsfile,0,0);
 i=0;
 m=0;
 if (blk_tmp) g_free(blk_tmp);
-blk_tmp=g_malloc(10000*sizeof(BLKDESC));
+blk_tmp=g_malloc(10000*8);
 if (blk) g_free(blk);
-blk=g_malloc0(1000*sizeof(guint));
+blk=g_malloc0(1000*4);
 if (blk_count) g_free(blk_count);
-blk_count=g_malloc(1000*sizeof(guint));
+blk_count=g_malloc(1000*4);
 blk_count[i]=0;
 gtk_tree_store_append (store, &iter1, NULL);
 loc=0;
@@ -216,8 +216,8 @@ if(loc+6<=total)
 /* extend memory for more blocks */ 
            if(fmod(blk_count[i],10000)==0)
             {
-             blk_tmp_ext=g_malloc((blk_count[i]+10000)*sizeof(BLKDESC));
-             g_memmove(blk_tmp_ext,blk_tmp,blk_count[i]*sizeof(BLKDESC));
+             blk_tmp_ext=g_malloc((blk_count[i]+10000)*8);
+             g_memmove(blk_tmp_ext,blk_tmp,blk_count[i]*8);
              g_free(blk_tmp);
              blk_tmp=blk_tmp_ext;
             }
@@ -237,7 +237,7 @@ if(loc+6<=total)
             if (blk_count[i]>0)
              {
               if (blk[i]) g_free(blk[i]);
-              blk[i] = g_malloc(blk_count[i]*sizeof(BLKDESC));
+              blk[i] = g_malloc(blk_count[i]*8);
               for (m=0 ; m < blk_count[i] ; m++)
                 (*blk[i])[m] = (*blk_tmp)[m] ;
               sprintf(label,"File%3d  %5d",i+1,blk_count[i]);
@@ -246,12 +246,12 @@ if(loc+6<=total)
 /* extend memory for more files */
            if(fmod(i,1000)==0)
             {
-             blk_count_ext=g_malloc((i+1000)*sizeof(guint));
-             g_memmove(blk_count_ext,blk_count,i*sizeof(guint));
+             blk_count_ext=g_malloc((i+1000)*4);
+             g_memmove(blk_count_ext,blk_count,i*4);
              g_free(blk_count);
              blk_count=blk_count_ext;
-             blk_ext=g_malloc0((i+1000)*sizeof(guint));
-             g_memmove(blk_ext,blk,i*sizeof(BLKDESC));
+             blk_ext=g_malloc0((i+1000)*4);
+             g_memmove(blk_ext,blk,i*4);
              g_free(blk);
              blk=blk_ext;
             }
@@ -277,7 +277,7 @@ gtk_tree_view_set_model (GTK_TREE_VIEW (treeview), GTK_TREE_MODEL (store));
 if(blk_count[i]>0)
       {
            if (blk[i]) g_free(blk[i]);
-           blk[i] = g_malloc(blk_count[i]*sizeof(BLKDESC));
+           blk[i] = g_malloc(blk_count[i]*8);
            for (m=0 ; m < blk_count[i] ; m++)
            (*blk[i])[m] = (*blk_tmp)[m] ;
            if(tape_end==TRUE)
@@ -647,7 +647,7 @@ gfloat ftotal;
 guint progress;
 guint blk_start,blk_end;
 rec=g_malloc(2*lrecl);
-type=g_malloc(sizeof(guint)*lrecl);
+type=g_malloc(4*lrecl);
 
 /* initialisation */
 
@@ -909,7 +909,7 @@ on_config_dialog_okbutton_clicked      (GtkButton       *button,
                                         gpointer         user_data)
 {
 gboolean p;
-guint l;
+guint32 l;
 
 if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(index_check)))
   {
@@ -1319,7 +1319,6 @@ on_rechercher_dialog_okbutton_clicked  (GtkButton       *button,
                                         gpointer         user_data)
 {
 const gchar *chaine;
-gchar mess[130]; 
 gboolean chaine_valid;
 gboolean casse, debut, hexa;
 guint8 car,c,v[101];
@@ -1399,17 +1398,24 @@ chaine_valid=FALSE;
 if(chaine_valid==FALSE)
  {
     if(n==0)
-     sprintf(mess,"Chaine Vide: \"%s\"",chaine);
+    message_dialog = gtk_message_dialog_new (GTK_WINDOW(awsedit),
+		         GTK_DIALOG_DESTROY_WITH_PARENT,
+			 GTK_MESSAGE_ERROR,
+			 GTK_BUTTONS_CLOSE,
+			 "Chaine Vide");
     else
      if (hexa)
-      sprintf(mess,"Chaine Hexadecimale Invalide: \"%s\"",chaine);
+      message_dialog = gtk_message_dialog_new (GTK_WINDOW(awsedit),
+		      GTK_DIALOG_DESTROY_WITH_PARENT,
+		      GTK_MESSAGE_ERROR,
+		      GTK_BUTTONS_CLOSE,
+		      "Chaine Hexadecimale Invalide: \"%s\"",chaine);
      else
-      sprintf(mess,"Chaine Caracteres Invalide \"%s\"",chaine);
-    message_dialog = gtk_message_dialog_new (GTK_WINDOW(awsedit),
-                                  GTK_DIALOG_DESTROY_WITH_PARENT,
-                                  GTK_MESSAGE_ERROR,
-                                  GTK_BUTTONS_CLOSE,
-                                  mess);
+      message_dialog = gtk_message_dialog_new (GTK_WINDOW(awsedit),
+                       GTK_DIALOG_DESTROY_WITH_PARENT,
+                       GTK_MESSAGE_ERROR,
+                       GTK_BUTTONS_CLOSE,
+                      "Chaine Caracteres Invalide \"%s\"",chaine);
    gtk_window_set_title(GTK_WINDOW(message_dialog),"Erreur Recherche");
    run_dialog();
  }       
@@ -1478,14 +1484,17 @@ else
     read(f_awsfile,fbuf,(*blk[fi])[bi].length);
 /* chaine non existante */ 
     if (hexa)
-    sprintf(mess,"Chaine Hexadecimale Introuvable: \"%s\"",chaine);
-    else
-    sprintf(mess,"Chaine Caracteres Introuvable: \"%s\"",chaine); 
     message_dialog = gtk_message_dialog_new (GTK_WINDOW(awsedit),
-                                  GTK_DIALOG_DESTROY_WITH_PARENT,
-                                  GTK_MESSAGE_WARNING,
-                                  GTK_BUTTONS_CLOSE,
-                                  mess);
+		    GTK_DIALOG_DESTROY_WITH_PARENT,
+		    GTK_MESSAGE_WARNING,
+		    GTK_BUTTONS_CLOSE,
+		    "Chaine Hexadecimale Introuvable: \"%s\"",chaine);
+    else
+    message_dialog = gtk_message_dialog_new (GTK_WINDOW(awsedit),
+                     GTK_DIALOG_DESTROY_WITH_PARENT,
+                     GTK_MESSAGE_WARNING,
+                     GTK_BUTTONS_CLOSE,
+                    "Chaine Caracteres Introuvable: \"%s\"",chaine); 
     gtk_window_set_title(GTK_WINDOW(message_dialog),"Fin Recherche");
     run_dialog();
   }
