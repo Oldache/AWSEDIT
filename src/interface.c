@@ -949,7 +949,7 @@ gtk_window_get_size(GTK_WINDOW(awsedit),&x,&y);
  allocstat.height=24;
  gtk_widget_size_allocate(statusbar,&allocstat);
 
-// gtk_widget_queue_resize(scrolledwindow1);
+ gtk_widget_queue_resize(scrolledwindow1);
 
  return;
 }
