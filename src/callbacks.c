@@ -188,9 +188,9 @@ m=0;
 if (blk_tmp) g_free(blk_tmp);
 blk_tmp=g_malloc(10000*sizeof(BLKDESC));
 if (blk) g_free(blk);
-blk=g_malloc0(1000*sizeof(guint));
+blk=g_malloc0(1000*sizeof(guint64));
 if (blk_count) g_free(blk_count);
-blk_count=g_malloc(1000*sizeof(guint));
+blk_count=g_malloc(1000*sizeof(guint64));
 blk_count[i]=0;
 gtk_tree_store_append (store, &iter1, NULL);
 loc=0;
@@ -246,11 +246,11 @@ if(loc+6<=total)
 /* extend memory for more files */
            if(fmod(i,1000)==0)
             {
-             blk_count_ext=g_malloc((i+1000)*sizeof(guint));
-             g_memmove(blk_count_ext,blk_count,i*sizeof(guint));
+             blk_count_ext=g_malloc((i+1000)*sizeof(guint64));
+             g_memmove(blk_count_ext,blk_count,i*sizeof(guint64));
              g_free(blk_count);
              blk_count=blk_count_ext;
-             blk_ext=g_malloc0((i+1000)*sizeof(guint));
+             blk_ext=g_malloc0((i+1000)*sizeof(guint64));
              g_memmove(blk_ext,blk,i*sizeof(BLKDESC));
              g_free(blk);
              blk=blk_ext;
@@ -647,7 +647,7 @@ gfloat ftotal;
 guint progress;
 guint blk_start,blk_end;
 rec=g_malloc(2*lrecl);
-type=g_malloc(sizeof(guint)*lrecl);
+type=g_malloc(sizeof(guint64)*lrecl);
 
 /* initialisation */
 
