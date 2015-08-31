@@ -692,7 +692,7 @@ create_config_dialog (void)
   gtk_widget_show (_);
   gtk_box_pack_start (GTK_BOX (dialog_vbox3), _, TRUE, TRUE, 0);
 
-  lrecl_spin_adj = gtk_adjustment_new (80, 4, 4750, 1, 10, 10);
+  lrecl_spin_adj = gtk_adjustment_new (80, 4, 65535, 1, 10, 10);
   lrecl_spin = gtk_spin_button_new (GTK_ADJUSTMENT (lrecl_spin_adj), 1, 0);
   gtk_widget_show (lrecl_spin);
   gtk_fixed_put (GTK_FIXED (_), lrecl_spin, 144, 120);

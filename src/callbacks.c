@@ -443,12 +443,12 @@ else
                     if(tabindex)
                      {
                        if (dec)
-                         sprintf(charseq,"%4d",k);
+                         sprintf(charseq,"%5d",k);
                        else
-                         sprintf(charseq,"%4x",k);
+                         sprintf(charseq,"%5x",k);
                      g_strcanon(charseq,"0123456789abcdef",'0');
                      gtk_text_buffer_insert_with_tags_by_name (buffer, &iterbuf,
-			  	             charseq, 4, "monospace","red_foreground", NULL);
+			  	             charseq, 5, "monospace","red_foreground", NULL);
                      }
                   q=0;                                       
                   for (k=l*lrecl; k<(l+1)*lrecl && k<(*blk[fi])[bi].length; k++)
@@ -926,7 +926,7 @@ if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(hexa_data_check)))
 else 
     hexadata=FALSE;
 lrecl=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(lrecl_spin));
-if(lrecl+lrecl*2*hexadata>4750 && hexadata) lrecl=4750/3;
+// if(lrecl+lrecl*2*hexadata>4750 && hexadata) lrecl=4750/3;
 gtk_widget_destroy(param);
 change_selection();
 }
