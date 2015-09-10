@@ -482,7 +482,7 @@ else
              { 
               gint  dep=0;
               gint  mul=1;
-              if (tabindex)  dep=4;
+              if (tabindex)  dep=5;
               if (hexadata)  mul=2;
               gtk_text_buffer_get_iter_at_line_index(buffer,&iterline,it1/lrecl,fmod(it1,lrecl)*mul+dep);
               gtk_text_buffer_get_iter_at_line_index(buffer,&iterindex,it2/lrecl,(fmod(it2,lrecl)+1)*mul+dep);
